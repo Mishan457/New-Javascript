@@ -107,7 +107,7 @@ border-radius: 25px;
         function checkAnswer() {
             let spaceYear = document.getElementById('spaceYear').value;
             let resultDiv = document.getElementById('result');
-            }if (spaceYear == 1961) {
+            if (spaceYear == 1961) {
                 resultDiv.innerHTML = "<div>Excellent, you are right</div>";
             } else if (spaceYear > 1961) {
                 resultDiv.innerHTML = "<div>Many people already flew this year</div>";
@@ -116,6 +116,7 @@ border-radius: 25px;
             } else {
                 resultDiv.innerHTML = "<div>Please, use numbers to answer</div>";
             }
+        }
     
     </script>
 </body>
