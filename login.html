@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Kelly+Slab&display=swap');
+        body {
+            background-image: url('https://images.unsplash.com/photo-1454117096348-e4abbeba002c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            box-shadow: 0px 0px 10px gray;
+            width: 300px;
+            font-size: 25px;
+            font-family: 'EB Garamond', serif;
+            font-weight: 400;
+            color: black;
+            border-radius: 15px;
+            padding: 15px 20px;
+            text-align: center;
+            background-color: white;
+            border: solid 2px black;
+        }
+        .container input {
+            width: calc(100% - 40px);
+            padding: 10px;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .button-15 {
+  background-image: linear-gradient(#42A1EC, #0070C9);
+  border: 1px solid #0077CC;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  direction: ltr;
+  display: block;
+  font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -.022em;
+  line-height: 1.47059;
+  min-width: 30px;
+  overflow: visible;
+  padding: 4px 15px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: auto;
+}
+
+.button-15:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.button-15:hover {
+  background-image: linear-gradient(#51A9EE, #147BCD);
+  border-color: #1482D0;
+  text-decoration: none;
+}
+
+.button-15:active {
+  background-image: linear-gradient(#3D94D9, #0067B9);
+  border-color: #006DBC;
+  outline: none;
+}
+
+.button-15:focus {
+  box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+  outline: none;
+}	
+input{
+text-align: center; 
+border-color: black;
+border-radius: 25px;    
+}
+h1{
+text-align: center;    
+}
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Log-in</h1>
+        <label for="login">Write your login:</label>
+        <input type="text" id="login" name="login" placeholder="User">
+        <label for="password">Write your password:</label>
+        <input type="password" id="password" name="password" placeholder="password">
+        <button onclick="checkLogin()" class="button-15">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkLogin() {
+            let login = document.getElementById('login').value;
+            let password = document.getElementById('password').value;
+            let resultDiv = document.getElementById('result');
+
+            if (login === 'User') {
+                if (password === 'password') {
+                    resultDiv.innerHTML = "<p>Welcome!</p>";
+                } else if (password === '') {
+                    resultDiv.innerHTML = "<p>Fill the password</p>";
+                } else {
+                    resultDiv.innerHTML = "<p>Password is incorrect</p>";
+                }
+            } else if (login === '') {
+                resultDiv.innerHTML = "<p>Fill the login</p>";
+            }
+                else if (login === '' && password === '') {
+                resultDiv.innerHTML = "<p>Fill the login and password</p>";
+            } else {
+                resultDiv.innerHTML = "<p>User is undefined</p>";
+            }
+        }
+    </script>
+</body>
+</html>

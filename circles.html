@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circles</title>
+    <style>
+        body {
+            background-image: url(https://images.unsplash.com/photo-1454117096348-e4abbeba002c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        #canvasContainer, #controls {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .input-container {
+            box-shadow: 0px 0px 10px gray;
+            width: 300px;
+            font-size: 25px;
+            font-family: "EB Garamond", serif;
+            font-weight: 400;
+            color: black;
+            border-radius: 15px;
+            padding: 15px 20px;
+            text-align: center;
+            margin: 20px auto;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            border: solid 2px black;
+        }
+        #canvasContainer {
+            width: 500px; 
+            height: 500px; 
+            border: 2px solid black;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 10px; 
+        }
+        .button-15 {
+            background-image: linear-gradient(#42A1EC, #0070C9);
+            border: 1px solid #0077CC;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: ltr;
+            display: block;
+            font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            line-height: 1.47059;
+            min-width: 30px;
+            overflow: visible;
+            padding: 4px 15px;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            margin: auto;
+        }
+
+        .button-15:disabled {
+            cursor: default;
+            opacity: .3;
+        }
+
+        .button-15:hover {
+            background-image: linear-gradient(#51A9EE, #147BCD);
+            border-color: #1482D0;
+            text-decoration: none;
+        }
+
+        .button-15:active {
+            background-image: linear-gradient(#3D94D9, #0067B9);
+            border-color: #006DBC;
+            outline: none;
+        }
+
+        .button-15:focus {
+            box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+            outline: none;
+        }   
+        input {
+            text-align: center;  
+            border-color: black;
+            border-radius: 25px;  
+            margin-bottom: 10px; 
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls" class="input-container">
+        <h2>Circles</h2>
+        <label for="circleNumber">Enter number of circles:</label>
+        <input type="number" id="circleNumber">
+        <button onclick="drawCircles()" class="button-15">Submit</button>
+    </div>
+
+    <div id="canvasContainer">
+        <canvas id="myCanvas" width="500" height="500"></canvas>
+    </div>
+
+    <script type="text/javascript">
+        function drawCircles() {
+            let canvas = document.getElementById('myCanvas');
+            let cxt = canvas.getContext('2d');
+            let circleNumber = document.getElementById('circleNumber').value;
+            let max = 40;
+            let min = 5;
+            let colors =["#F14A45","#37E1EF","#D637EF","#58EF37","#EFE137","#EF4237"];
+            let numberColor = colors.length;
+            cxt.clearRect(0, 0, canvas.width, canvas.height); 
+
+            for(let i = 0; i < circleNumber; i++){
+                let x = Math.random() * (canvas.width - 2 * max) + max;
+                let y = Math.random() * (canvas.height - 2 * max) + max;
+                let radius = min + (Math.random() * (max-min));
+                let colorIndex = Math.round(Math.random() * (numberColor - 1));
+                let color = colors[colorIndex];
+
+             
+                if (x - radius < 0) {
+                    x = radius;
+                } else if (x + radius > canvas.width) {
+                    x = canvas.width - radius;
+                }
+
+                if (y - radius < 0) {
+                    y = radius;
+                } else if (y + radius > canvas.height) {
+                    y = canvas.height - radius;
+                }
+
+                cxt.beginPath();
+                cxt.arc(x, y, radius, Math.PI* 0, Math.PI*2, false);
+                cxt.fillStyle = color;
+                cxt.fill();
+            }
+        }
+    </script>
+</body>
+</html>

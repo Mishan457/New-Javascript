@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(https://images.unsplash.com/photo-1454117096348-e4abbeba002c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        .container {
+            box-shadow: 0px 0px 10px gray;
+            width: 300px;
+            font-size: 25px;
+            font-family: "EB Garamond", serif;
+            font-weight: 400;
+            color: black;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 20px auto;
+            background-color: white;
+            border: solid 2px black;
+        }
+        input{
+text-align: center;
+border-color: black;
+border-radius: 25px;
+margin-left: 60px;  
+margin-bottom: 10px;  
+}
+label{
+    margin-left: 30px;    
+}
+.button-15 {
+            background-image: linear-gradient(#42A1EC, #0070C9);
+            border: 1px solid #0077CC;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            direction: ltr;
+            display: block;
+            font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: -.022em;
+            line-height: 1.47059;
+            min-width: 30px;
+            overflow: visible;
+            padding: 4px 15px;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            margin: auto;
+            margin-right: 107px;
+           
+        }
+
+        .button-15:disabled {
+            cursor: default;
+            opacity: .3;
+        }
+
+        .button-15:hover {
+            background-image: linear-gradient(#51A9EE, #147BCD);
+            border-color: #1482D0;
+            text-decoration: none;
+        }
+
+        .button-15:active {
+            background-image: linear-gradient(#3D94D9, #0067B9);
+            border-color: #006DBC;
+            outline: none;
+        }
+
+        .button-15:focus {
+            box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+            outline: none;
+        }
+h2{
+    text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <h2>Emoji Ladder</h2>
+            <label for="input1">Amount of steps:</label>
+            <input type="text" name="" class="numberSteps" id="input1">
+           <label for="input2">Any symbol:</label>
+            <input type="text" name="" class="symbol" id="input2">
+            <button onclick="myClick()" class="button-15">Generate</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("button").onclick = myClick
+        function myClick() {
+            let symbol = document.querySelector(".symbol").value;
+            let numberSteps = document.querySelector(".numberSteps").value
+            let output = ''
+
+            for (let i = 0; i < numberSteps; i++) {
+                let currentSymbols = symbol.repeat(i);
+                output += currentSymbols + '<br>';
+            }
+            document.getElementById("result").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
